@@ -1,0 +1,11 @@
+https://docs.celeryproject.org/en/latest/django/first-steps-with-django.html#using-celery-with-django
+1、安装django-celery-results库：
+$ pip install django-celery-results
+
+2、添加django_celery_results到INSTALLED_APPS您的Django项目的中settings.py：
+INSTALLED_APPS = (
+    ...,
+    'django_celery_results',
+)
+3、通过执行数据库迁移来创建Celery数据库表：
+$ python manage.py migrate django_celery_results
