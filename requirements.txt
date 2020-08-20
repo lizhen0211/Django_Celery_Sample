@@ -1,0 +1,8 @@
+django==2.2.0
+psycopg2-binary==2.8.4
+djmemcache==0.8
+psycogreen==1.0
+gunicorn==19.6.0
+requests==2.22.0
+gevent==20.4.0
+celery==4.4.2
