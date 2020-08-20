@@ -120,3 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+CELERY_TASK_RESULT_EXPIRES = 60 * 60 * 24
+CELERY_IGNORE_RESULT = False
+CELERYD_MAX_TASKS_PER_CHILD = 50
+CELERY_TASK_SERIALIZER = 'json'
