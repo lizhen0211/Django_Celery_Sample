@@ -1,4 +1,9 @@
 #启动
-celery -A django_celery_sample worker -l info
+celery -A django_celery_sample worker -c 5 -l info
 #停止
 celery multi start w1 -A django_celery_sample -l info
+
+
+celery -A django_celery_sample worker -Q django_celery.tasks.receivedata -l info
+celery -A django_celery_sample worker -Q django_celery.tasks.parsedata -l info
+celery -A django_celery_sample worker -Q django_celery.tasks.forwarddata -l info

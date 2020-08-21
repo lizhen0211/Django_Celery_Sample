@@ -16,6 +16,8 @@ app = Celery('django_celery_sample', broker='amqp://rabbit:123456@localhost:5672
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+# app.config_from_object("celeryconfig")  # 指定配置文件
+
 default_exchange = Exchange('default', type='direct')
 
 app.conf.update(
@@ -23,10 +25,10 @@ app.conf.update(
     CELERY_IGNORE_RESULT=settings.CELERY_IGNORE_RESULT,
     CELERYD_MAX_TASKS_PER_CHILD=settings.CELERYD_MAX_TASKS_PER_CHILD,
     CELERY_TASK_SERIALIZER=settings.CELERY_TASK_SERIALIZER,
-    # CELERY_DEFAULT_QUEUE='middle',
+    # CELERY_DEFAULT_QUEUE='receivedata_queue',
 
     CELERY_QUEUES=(
-        Queue('receivedata_queue', default_exchange, routing_key='receivedata_key',
+        Queue('receivedata_queue', routing_key='receivedata_key',
               consumer_arguments={'x-priority': 100}),
         Queue('parsedata_queue', default_exchange, routing_key='parsedata_key',
               consumer_arguments={'x-priority': 10}),
